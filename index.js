@@ -4,11 +4,12 @@ let app = http.createServer((req, res) => {
 
     const method = req.method
     if( method === "GET") {
-        const interval = setInterval(() => console.log(new Date().toLocaleString()), process.env.PARAM1)
+        const interval = setInterval(() => console.log(new Date().toLocaleString()), process.env.START)
         setTimeout(()=>{
             clearInterval(interval)
             console.log(`stopped ${new Date().toLocaleString()}`)
-        }, process.env.PARAM2)
+            res.write(`<h1>stopped ${new Date().toLocaleString()}</h1>`)
+        }, process.env.FINISH)
     }
 });
 
